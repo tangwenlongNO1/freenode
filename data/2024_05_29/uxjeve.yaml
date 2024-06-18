@@ -1,9 +1,9 @@
 ####################################
 # 创建者：v2rayse.com
 # 客户端：Clash.Meta
-# 创建时间：2024-05-29 20:50:33
+# 创建时间：2024-06-18 20:35:03
 # 使用模版：no-resolve
-# 节点数量：3
+# 节点数量：2
 # 节点类型：vmess, vless
 ####################################
 # !!当前配置文件请使用基于 Clash.Meta 内核程序
@@ -87,60 +87,53 @@ dns:
       - 0.0.0.0/32
 
 proxies:
-  - {"name":"vmess|IQ1s.love@xray.com","type":"vmess","server":"34.170.240.117","port":12159,"cipher":"auto","uuid":"10e9fe58-20d5-4e80-b0aa-cf7dd3290b93","alterId":0,"tls":false,"skip-cert-verify":true,"network":"ws","ws-opts":{"path":"/10e9fe58"}}
-  - {"name":"vless+vision|JA35.love@xray.com\r","type":"vless","server":"34-170-240-117.nip.io","port":21975,"uuid":"736a22c7-2825-4e83-daf6-9bc79d73a404","tls":true,"servername":"34-170-240-117.nip.io","flow":"xtls-rprx-vision","network":"tcp","client-fingerprint":"chrome"}
-  - {"name":"vless+real|TGmZ.love@xray.com\r","type":"vless","server":"34.170.240.117","port":443,"udp":true,"uuid":"394915eb-0466-45d0-f221-4b8aa3a5288f","tls":true,"servername":"394915eb.com","flow":"xtls-rprx-vision","network":"tcp","reality-opts":{"public-key":"W9BjX6YmCIVsjhKMlz233Yoe0xcf0SVHfvPKqbf3vCg"},"client-fingerprint":"chrome"}
+  - {"name":"vmess+ws|G9OV.love@xray.com","type":"vmess","server":"34.170.240.117","port":48934,"cipher":"auto","uuid":"f6aa7417-60bc-4f21-fb35-c48ce02e9f75","alterId":0,"tls":false,"skip-cert-verify":true,"network":"ws","ws-opts":{"path":"/f6aa7417"}}
+  - {"name":"vless+vision|8VvH.love@xray.com","type":"vless","server":"34-170-240-117.nip.io","port":46067,"uuid":"e7c965b2-0d82-46a3-dfd8-48f6baa2aff2","tls":true,"servername":"34-170-240-117.nip.io","flow":"xtls-rprx-vision","network":"tcp","client-fingerprint":"chrome"}
 proxy-groups:
   - name: 🚀 节点选择
     type: select
     proxies:
       - ♻️ 自动选择
       - DIRECT
-      - vmess|IQ1s.love@xray.com
-      - "vless+vision|JA35.love@xray.com\r"
-      - "vless+real|TGmZ.love@xray.com\r"
+      - vmess+ws|G9OV.love@xray.com
+      - vless+vision|8VvH.love@xray.com
   - name: ♻️ 自动选择
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
     proxies:
-      - vmess|IQ1s.love@xray.com
-      - "vless+vision|JA35.love@xray.com\r"
-      - "vless+real|TGmZ.love@xray.com\r"
+      - vmess+ws|G9OV.love@xray.com
+      - vless+vision|8VvH.love@xray.com
   - name: 🌍 国外媒体
     type: select
     proxies:
       - 🚀 节点选择
       - ♻️ 自动选择
       - 🎯 全球直连
-      - vmess|IQ1s.love@xray.com
-      - "vless+vision|JA35.love@xray.com\r"
-      - "vless+real|TGmZ.love@xray.com\r"
+      - vmess+ws|G9OV.love@xray.com
+      - vless+vision|8VvH.love@xray.com
   - name: 📲 电报信息
     type: select
     proxies:
       - 🚀 节点选择
       - 🎯 全球直连
-      - vmess|IQ1s.love@xray.com
-      - "vless+vision|JA35.love@xray.com\r"
-      - "vless+real|TGmZ.love@xray.com\r"
+      - vmess+ws|G9OV.love@xray.com
+      - vless+vision|8VvH.love@xray.com
   - name: Ⓜ️ 微软服务
     type: select
     proxies:
       - 🎯 全球直连
       - 🚀 节点选择
-      - vmess|IQ1s.love@xray.com
-      - "vless+vision|JA35.love@xray.com\r"
-      - "vless+real|TGmZ.love@xray.com\r"
+      - vmess+ws|G9OV.love@xray.com
+      - vless+vision|8VvH.love@xray.com
   - name: 🍎 苹果服务
     type: select
     proxies:
       - 🚀 节点选择
       - 🎯 全球直连
-      - vmess|IQ1s.love@xray.com
-      - "vless+vision|JA35.love@xray.com\r"
-      - "vless+real|TGmZ.love@xray.com\r"
+      - vmess+ws|G9OV.love@xray.com
+      - vless+vision|8VvH.love@xray.com
   - name: 🎯 全球直连
     type: select
     proxies:
@@ -163,9 +156,8 @@ proxy-groups:
       - 🚀 节点选择
       - 🎯 全球直连
       - ♻️ 自动选择
-      - vmess|IQ1s.love@xray.com
-      - "vless+vision|JA35.love@xray.com\r"
-      - "vless+real|TGmZ.love@xray.com\r"
+      - vmess+ws|G9OV.love@xray.com
+      - vless+vision|8VvH.love@xray.com
 
 rules:
 # 本地/局域网地址
