@@ -1,0 +1,361 @@
+mixed-port: 7890
+allow-lan: true
+mode: rule
+log-level: info
+ipv6: false
+external-controller: 0.0.0.0:9090
+dns:
+  enable: true
+  listen: 0.0.0.0:53
+  ipv6: false
+  default-nameserver:
+    - 223.5.5.5
+    - 114.114.114.114
+  nameserver:
+    - 223.5.5.5
+    - 114.114.114.114
+    - 119.29.29.29
+    - 180.76.76.76
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - "*.lan"
+    - "*.localdomain"
+    - "*.example"
+    - "*.invalid"
+    - "*.localhost"
+    - "*.test"
+    - "*.local"
+    - "*.home.arpa"
+    - router.asus.com
+    - localhost.sec.qq.com
+    - localhost.ptlogin2.qq.com
+    - +.msftconnecttest.com
+tun:
+  enable: true
+  stack: system
+  auto-route: true
+  auto-detect-interface: true
+  dns-hijack:
+    - 114.114.114.114
+    - 180.76.76.76
+    - 119.29.29.29
+    - 223.5.5.5
+    - 8.8.8.8
+    - 8.8.4.4
+    - 1.1.1.1
+    - 1.0.0.1
+proxies:
+  - name: Singapore
+    type: ss
+    server: 45.76.159.147
+    port: 46614
+    cipher: chacha20-ietf-poly1305
+    password: M302v1xA3REI56fSNm2g8c
+  - name: Japan
+    type: ss
+    server: 45.32.252.131
+    port: 50955
+    cipher: chacha20-ietf-poly1305
+    password: 3lHpkYv3Nf0rbW06DY17Iu
+  - name: USA
+    type: ss
+    server: 104.238.140.45
+    port: 11051
+    cipher: chacha20-ietf-poly1305
+    password: JUXsy78dSs6ROkasikmoaL
+  - name: Finland
+    type: ss
+    server: 185.212.149.195
+    port: 55638
+    cipher: chacha20-ietf-poly1305
+    password: qlAaMfSPv2c1Sys925zjWY
+  - name: Sweden
+    type: ss
+    server: 46.246.93.107
+    port: 12138
+    cipher: chacha20-ietf-poly1305
+    password: tOLciW2sQHU2YCKPZJPVIH
+  - name: Austria
+    type: ss
+    server: 149.154.154.189
+    port: 51163
+    cipher: chacha20-ietf-poly1305
+    password: z6aCFk23UZlDwGTecY3biB@149.154.154.187:63991,Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpSV2lxT0pWYjZscVU0alMzMFVyUEtv@149.154.154.37:44015,Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpxS3hhbHFIZ1J2S0pMdnB3dTF3RXQw
+  - name: Bulgaria
+    type: ss
+    server: 194.68.225.52
+    port: 65232
+    cipher: chacha20-ietf-poly1305
+    password: 6J754ee6ITjyfDysi78uqJ
+  - name: Russia
+    type: ss
+    server: 77.73.68.155
+    port: 54106
+    cipher: chacha20-ietf-poly1305
+    password: 9CmcQ6dF8LEyZU0YsMjgu8
+  - name: Latvia
+    type: ss
+    server: 185.176.221.72
+    port: 24637
+    cipher: chacha20-ietf-poly1305
+    password: MholStyHL7DhrewKbpQa20
+  - name: Romania
+    type: ss
+    server: 194.68.44.42
+    port: 64546
+    cipher: chacha20-ietf-poly1305
+    password: U83u9OGpvSatIUW7LsWffr
+  - name: Switzerland
+    type: ss
+    server: 178.209.40.104
+    port: 57080
+    cipher: chacha20-ietf-poly1305
+    password: iAnxDuUoJ4syU01dhmBHg8@178.209.50.149:11991,Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpucWNKdmNzcE9Bc2V6TlBZNFpzVGJo
+  - name: Hong Kong
+    type: ss
+    server: 158.255.208.39
+    port: 22573
+    cipher: chacha20-ietf-poly1305
+    password: K741Si1YD2wZ9HHyp5EpRs
+  - name: Hungary
+    type: ss
+    server: 194.71.130.26
+    port: 2949
+    cipher: chacha20-ietf-poly1305
+    password: v8NKiSxilGVslodFPWWLR8
+  - name: Brazil
+    type: ss
+    server: 185.192.124.238
+    port: 24352
+    cipher: chacha20-ietf-poly1305
+    password: 9THsr8q41X5SaJaxouYtPE
+proxy-groups:
+  - name: 🚀 节点选择
+    type: select
+    proxies:
+      - ♻️ 自动选择
+      - DIRECT
+      - Singapore
+      - Japan
+      - USA
+      - Finland
+      - Sweden
+      - Austria
+      - Bulgaria
+      - Russia
+      - Latvia
+      - Romania
+      - Switzerland
+      - Hong Kong
+      - Hungary
+      - Brazil
+  - name: ♻️ 自动选择
+    type: url-test
+    proxies:
+      - Singapore
+      - Japan
+      - USA
+      - Finland
+      - Sweden
+      - Austria
+      - Bulgaria
+      - Russia
+      - Latvia
+      - Romania
+      - Switzerland
+      - Hong Kong
+      - Hungary
+      - Brazil
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+  - name: 🌍 国外媒体
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🎯 全球直连
+      - Singapore
+      - Japan
+      - USA
+      - Finland
+      - Sweden
+      - Austria
+      - Bulgaria
+      - Russia
+      - Latvia
+      - Romania
+      - Switzerland
+      - Hong Kong
+      - Hungary
+      - Brazil
+  - name: 📲 电报信息
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - 🎯 全球直连
+      - Singapore
+      - Japan
+      - USA
+      - Finland
+      - Sweden
+      - Austria
+      - Bulgaria
+      - Russia
+      - Latvia
+      - Romania
+      - Switzerland
+      - Hong Kong
+      - Hungary
+      - Brazil
+  - name: Ⓜ️ 微软服务
+    type: select
+    proxies:
+      - 🎯 全球直连
+      - 🚀 节点选择
+      - Singapore
+      - Japan
+      - USA
+      - Finland
+      - Sweden
+      - Austria
+      - Bulgaria
+      - Russia
+      - Latvia
+      - Romania
+      - Switzerland
+      - Hong Kong
+      - Hungary
+      - Brazil
+  - name: 🍎 苹果服务
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - 🎯 全球直连
+      - Singapore
+      - Japan
+      - USA
+      - Finland
+      - Sweden
+      - Austria
+      - Bulgaria
+      - Russia
+      - Latvia
+      - Romania
+      - Switzerland
+      - Hong Kong
+      - Hungary
+      - Brazil
+  - name: 🎯 全球直连
+    type: select
+    proxies:
+      - DIRECT
+      - 🚀 节点选择
+      - ♻️ 自动选择
+  - name: 🛑 全球拦截
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+  - name: 🍃 应用净化
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+  - name: 🐟 漏网之鱼
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - 🎯 全球直连
+      - ♻️ 自动选择
+      - Singapore
+      - Japan
+      - USA
+      - Finland
+      - Sweden
+      - Austria
+      - Bulgaria
+      - Russia
+      - Latvia
+      - Romania
+      - Switzerland
+      - Hong Kong
+      - Hungary
+      - Brazil
+rule-providers:
+  LocalAreaNetwork:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/LocalAreaNetwork.list
+    path: ./rules/LocalAreaNetwork.yaml
+  BanAD:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/BanAD.list
+    path: ./rules/BanAD.yaml
+  BanProgramAD:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/BanProgramAD.list
+    path: ./rules/BanProgramAD.yaml
+  GoogleCN:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/GoogleCN.list
+    path: ./rules/GoogleCN.yaml
+  SteamCN:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/Ruleset/SteamCN.list
+    path: ./rules/SteamCN.yaml
+  Microsoft:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/Microsoft.list
+    path: ./rules/Microsoft.yaml
+  Apple:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/Apple.list
+    path: ./rules/Apple.yaml
+  ProxyMedia:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/ProxyMedia.list
+    path: ./rules/ProxyMedia.yaml
+  Telegram:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/Telegram.list
+    path: ./rules/Telegram.yaml
+  ProxyLite:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/ProxyLite.list
+    path: ./rules/ProxyLite.yaml
+  ChinaDomain:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/ChinaDomain.list
+    path: ./rules/ChinaDomain.yaml
+  ChinaCompanyIp:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/refs/heads/master/Clash/ChinaCompanyIp.list
+    path: ./rules/ChinaCompanyIp.yaml
+rules:
+  - RULE-SET,LocalAreaNetwork,🎯 全球直连
+  - RULE-SET,BanAD,🛑 全球拦截
+  - RULE-SET,BanProgramAD,🍃 应用净化
+  - RULE-SET,GoogleCN,🎯 全球直连
+  - RULE-SET,SteamCN,🎯 全球直连
+  - RULE-SET,Microsoft,Ⓜ️ 微软服务
+  - RULE-SET,Apple,🍎 苹果服务
+  - RULE-SET,ProxyMedia,🌍 国外媒体
+  - RULE-SET,Telegram,📲 电报信息
+  - RULE-SET,ProxyLite,🚀 节点选择
+  - RULE-SET,ChinaDomain,🎯 全球直连
+  - RULE-SET,ChinaCompanyIp,🎯 全球直连
+  - GEOIP,CN,🎯 全球直连
+  - MATCH,🐟 漏网之鱼
